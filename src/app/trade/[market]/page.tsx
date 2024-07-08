@@ -4,7 +4,7 @@ import TradindViewChart from "@/components/TradindViewChart";
 import { useParams } from "next/navigation";
 import React from "react";
 
-function page() {
+function Page() {
   const { market } = useParams();
   return (
     <div className="flex flex-row flex-1">
@@ -19,4 +19,4 @@ function page() {
   );
 }
 
-export default page;
+export default Page;
