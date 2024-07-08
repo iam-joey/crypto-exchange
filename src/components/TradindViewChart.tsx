@@ -1,16 +1,16 @@
 import React from "react";
 import MarketBar from "./MarketBar";
 import TradeView from "./TradeView";
-import Trades from "./Trades";
+import BooksandTrades from "./BooksandTrades";
 
-function TradindViewChart() {
+function TradindViewChart({ market }: { market: string }) {
   return (
     <div className="flex flex-col flex-1 h-[650px] ">
-      <MarketBar />
+      <MarketBar market={market} />
       <div className="h-[1px] border-b border-slate-700"></div>
-      <div className="flex flex-row flex1 h-full">
+      <div className="flex flex-row h-full ">
         <TradeView />
-        <Trades />
+        <BooksandTrades market={market} />
       </div>
     </div>
   );

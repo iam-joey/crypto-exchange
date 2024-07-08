@@ -15,9 +15,16 @@ function NavBar() {
             "
         >
           <div className="p-1 text-xl cursor-pointer">
-            <Image src={"/backpack.png"} width={150} height={150} alt="Image" />
+            <Image
+              loading="lazy"
+              src={"/backpack.png"}
+              width={150}
+              height={150}
+              alt="Image"
+            />
           </div>
           <div
+            onClick={() => router.push("/market")}
             className={`text-xl p-1 cursor-pointer  ${
               route.startsWith("/market") ? "text-white" : "text-gray-600"
             } hover:text-white`}
@@ -25,7 +32,7 @@ function NavBar() {
             Markets
           </div>
           <div
-            onClick={() => router.push("/trade")}
+            onClick={() => router.push("/trade/SOL_USDC")}
             className={`text-xl p-1 cursor-pointer   ${
               route.startsWith("/trade") ? "text-white" : "text-gray-600"
             } hover:text-white`}

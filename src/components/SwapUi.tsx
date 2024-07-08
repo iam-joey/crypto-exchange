@@ -1,12 +1,15 @@
-import React from "react";
-// import Limit from "./Limit";
+"use client";
+import React, { useState } from "react";
+
 import Market from "./Market";
+import Limit from "./Limit";
 
 function SwapUi() {
+  const [render, setRender] = useState<boolean>(false);
   return (
     <div
       className="flex flex-col  w-full
-  "
+    "
     >
       <div className="flex flex-col">
         <div className="h-[60px]   flex flex-row ">
@@ -16,12 +19,26 @@ function SwapUi() {
         <div className="flex flex-col">
           <div className="flex flex-row gap-3 p-2 items-center">
             <div className="">
-              <button className="text-sm hover:border-b-2 hover:border-blue-500 hover:pb-[2px]">
+              <button
+                className={`text-sm hover:border-b-2 hover:border-blue-500 ${
+                  !render
+                    ? "text-gray-300 font-semibold border-b-2 border-blue-500"
+                    : "text-slate-500"
+                }`}
+                onClick={() => setRender(!render)}
+              >
                 Limit
               </button>
             </div>
             <div className=" ">
-              <button className="text-sm hover:border-b-2 hover:border-blue-500 hover:pb-[2px]">
+              <button
+                onClick={() => setRender(!render)}
+                className={`text-sm hover:border-b-2 hover:border-blue-500 ${
+                  render
+                    ? "text-gray-300 font-semibold border-b-2 border-blue-500"
+                    : "text-slate-500"
+                }`}
+              >
                 Market
               </button>
             </div>
@@ -29,14 +46,12 @@ function SwapUi() {
           <div className="border-b border-slate-900"></div>
           <div
             className="flex flex-row justify-between p-2 items-center
-          "
+            "
           >
             <p className="text-xs text-gray-500">Available Balance</p>
             <p className="text-xs">0.00USDC</p>
           </div>
-          <div className="p-2">
-            <Market />
-          </div>
+          <div className="p-2">{render ? <Market /> : <Limit />}</div>
         </div>
       </div>
     </div>
